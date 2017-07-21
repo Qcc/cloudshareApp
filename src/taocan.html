@@ -1,14 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style/taocan.css"></link>
-    <title>套餐</title>
+    <link rel="stylesheet" href="style/common.css"></link>
+    <script src="./js/zepto.min.js"></script>
+    <title>请选择套餐</title>
 </head>
+
 <body>
-    <p>套餐</p>
+    <div class="tc-continner">
+        <div class="logo-box">
+            <div class="logo">
+                <img class="img-logo" src="../images/logo.png"></img>
+            </div>
+            <h3>欢迎使用智足宝足部按摩器</h3>
+        </div>
+        <hr/>
+        <div class="tc-box">
+            <div id="tclow" class="tc-low enter-style">
+                <div class="tc-money">
+                    <span>￥</span>
+                    <p id="lowmoney" class="time">111</p>
+                    <span>元</span>
+                </div>
+                <div class="tc-low-title">
+                    <h4>怡然自得</h4>
+                    <p>点击开始按摩</p>
+                </div>
+                <div class="tc-footer">
+                    含<span id="lowtime"></span>分钟足部按摩
+                </div>
+            </div>
+            <div id="tcmiddle" class="tc-middle enter-style">
+                <div class="tc-money">
+                    <span>￥</span>
+                    <p id="middlemoney" class="time"></p>
+                    <span>元</span>
+                </div>
+                <div class="tc-middle-title">
+                    <h4>通体舒畅</h4>
+                    <p>点击开始按摩</p>
+                </div>
+                <div class="tc-footer">
+                    含<span id="middletime"></span>分钟足部按摩
+                </div>
+            </div>
+            <div id="tcheight" class="tc-height enter-style">
+                <div class="tc-money">
+                    <span>￥</span>
+                    <p id="heightmoney" class="time"></p>
+                    <span>元</span>
+                </div>
+                <div class="tc-height-title">
+                    <h4>心旷神怡</h4>
+                    <p>点击开始按摩</p>
+                </div>
+                <div class="tc-footer">
+                    含<span id="heighttime"></span>分钟足部按摩
+                </div>
+            </div>
+        </div>
+        <!--<div>
+            <label>
+            <input type="checkbox" checked="checked" name="vehicle" value="1"></input>
+            我同意云享智能协议
+            </label>
+        </div>-->
+    </div>
     <script src="./js/taocan.js"></script>
 </body>
+
 </html>

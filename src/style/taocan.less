@@ -1,14 +1,86 @@
-@base: #f938ab;
 
-.box-shadow(@style, @c) when (iscolor(@c)) {
-  -webkit-box-shadow: @style @c;
-  box-shadow:         @style @c;
+.tc-box{
+  margin: 0 auto;
+  width: 300px;  
+  position: relative;
+  min-width: 300px;
+  min-height: 150px;
 }
-.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
-  .box-shadow(@style, rgba(0, 0, 0, @alpha));
+.enter-style{
+  box-shadow: 2px 2px 3px 2px #aaa;
 }
-.box {
-  color: saturate(@base, 5%);
-  border-color: lighten(@base, 30%);
-  div { .box-shadow(0 0 5px, 30%) }
+.tc-middle{
+  position: relative;
+  width: 300px;
+  height: 110px;
+  border-radius: 10px;
+  margin-bottom: 40px; 
+  background: url('../images/middle.png') no-repeat center;
+  background-size: 100%;
+  
+}
+.tc-height{
+  position: relative;
+  width: 300px;
+  height: 110px;
+  margin-bottom: 40px;  
+  border-radius: 10px;
+  background: url('../images/hight.png') no-repeat center;
+  background-size: 100%;  
+}
+.tc-low{
+  position: relative;
+  margin-bottom: 40px;
+  width: 300px;
+  height: 110px;
+  border-radius: 10px;
+  background: url('../images/low.png') no-repeat center;
+  background-size: 100%;
+}
+
+.tc-money{
+  color: #fff;
+  position: absolute;
+  top:30%;
+  left: 40%;
+}
+.tc-money .time{
+  display: inline-block;
+  color: #fff;
+  font-size: 30px;
+}
+.tc-footer{
+  position: absolute;
+  bottom: 4px;
+  left: 10px
+}
+.tc-box .tc-low-title{
+  display: inline-block;
+  color:#e0677d;
+  position: absolute;
+  top: 10px;
+  right: 10px
+}
+.tc-low-title h4{
+  color:#e0677d;
+}
+.tc-box .tc-height-title{
+  display: inline-block;
+  color:#3183ab;
+  position: absolute;
+  top: 10px;
+  right: 10px
+}
+.tc-height-title h4{
+  color:#3183ab;
+}
+.tc-box .tc-middle-title{
+  display: inline-block;
+  color:#d09409;
+  position: absolute;
+  top: 10px;
+  right: 10px
+}
+.tc-middle-title h4{
+  color:#d09409;
 }
