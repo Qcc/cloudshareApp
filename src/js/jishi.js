@@ -3,22 +3,29 @@ window.onload = function() {
     var btAgent = $('#btagent');
     var time = $('#time');
     // var t = parseInt(data.remainSeconds);
-    var t = 600
+    var t = 1200;
     var delayInterval = setInterval(function() {
         var hours = Math.floor(t / 3600);
-        var minutes = Math.floor((t % 3600) % 60);
+        var minutes = Math.floor((t % 3600) / 60);
         var seconds = Math.floor(t % 60);
-        // int hour = second/3600;
-        // int minute = second%3600/60;
-        // int sec = second%60;
+        hours =  checkTime(hours);
+        minutes = checkTime(minutes);
+        seconds =  checkTime(seconds);
         time.text(hours + ':' + minutes + ':' + seconds);
-        t = t - 1;
         if (t === 0) {
             clearInterval(delayInterval);
         }
+        t--;
     }, 1000);
     delayInterval();
 }
+function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
+ if(i<10) 
+ { 
+  i = "0" + i; 
+ } 
+ return i; 
+} 
 
 function dataReady(data) {
     var delay = $('#delay');

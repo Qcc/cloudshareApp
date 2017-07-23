@@ -63,7 +63,8 @@ gulp.task('dev', function(done) {
 gulp.task('webserver', ['dev'], function() {
     gulp.src('dist')
         .pipe(webserver({
-            host: '192.168.200.178',
+            host: '192.168.1.108',
+            path: './dist',
             livereload: true,
             directoryListing: true,
             open: true
