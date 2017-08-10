@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style/bianhao.css"></link>
+  <link rel="stylesheet" href="./style/common.css"></link>
+  <script src="./js/zepto.min.js"></script>
+  <title>绑定房间号</title>
+</head>
+
+<body>
+  <div class="tc-continner">
+    <div class="logo-box">
+      <div class="logo">
+        <img class="img-logo" src="./images/logo.png"></img>
+      </div>
+      <h3>欢迎使用智足宝足部按摩器</h3>
+    </div>
+    <hr/>
+    <div class="tc-box">
+      <label>设备ID <input type="number" id="dev" placeholder="请输入设备ID"/></label><br/>
+      <p id="vailddev"></p>
+      <label>房间号 <input type="number" id="room" placeholder="请输入房间号"/></label><br/>
+      <p id="vaildroom"></p><br/>
+      <button id="bind">绑 定</button>
+      <h6 id="bindstatus"></h6>
+    </div>
+
+  </div>
+  <script src="./js/bianhao.js"></script>
+</body>
+
+</html>
