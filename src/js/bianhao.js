@@ -3,7 +3,6 @@ window.onload = function() {
 }
 
 function bindRoom(params) {
-  console.log('params', params)
   var bindstatus = $('#bindstatus');
   var dev = $('#dev');
   var room = $('#room');
@@ -57,21 +56,23 @@ function init() {
       vaildDev.text('');
     }
   });
-  room.on('input propertychange', function(e) {
-    bindstatus.text('');
-    if (e.target.value.length > 4) {
-      vaildRoom.text('房间号请输入四位数字，不够位0补');
-    } else {
-      vaildRoom.text('');
-    }
-  });
   room.on('change', function(e) {
-    if (e.target.value.length !== 4) {
-      vaildRoom.text('房间号请输入四位数字，不够位0补');
+    bindstatus.text('');
+    if (e.target.value.length < 3) {
+      vaildRoom.text('房间号请输入3-5位数字，不够位0补');
+    } else if (e.target.value.length > 5) {
+      vaildRoom.text('房间号请输入3-5位数字，不够位0补');
     } else {
       vaildRoom.text('');
     }
   });
+  // room.on('change', function(e) {
+  //   if (e.target.value.length > 6) {
+  //     vaildRoom.text('房间号请输入3-5位数字，不够位0补');
+  //   } else {
+  //     vaildRoom.text('');
+  //   }
+  // });
   bind.on('click', function(e) {
     if (dev[0].value === '') {
       vaildDev.text('设备ID不能为空')

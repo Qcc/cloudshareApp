@@ -39,8 +39,8 @@ function start(data) {
   var btAgent = $('#btagent');
   var time = $('#time');
   var tips = $('#tips');
+  var report = $('#report');
   var t = parseInt(data.remainSeconds);
-  btAgent.addClass('shake');
   var delayInterval = setInterval(function() {
     var hours = Math.floor(t / 3600);
     var minutes = Math.floor((t % 3600) / 60);
@@ -51,8 +51,8 @@ function start(data) {
     time.text(hours + ':' + minutes + ':' + seconds);
     if (t-- === 0) {
       clearInterval(delayInterval);
-      btAgent.removeClass('shake');
       tips.text('按摩结束');
+      report.hide();
       btAgent.text('我要加钟');
       btAgent.on('click', function(e) {
         window.location = './taocan.html?token=' + getUrlParam("token");

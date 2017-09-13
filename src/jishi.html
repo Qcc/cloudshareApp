@@ -2,36 +2,37 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./style/jishi.css"></link>
-    <link rel="stylesheet" href="./style/common.css"></link>
-    <script src="./js/zepto.min.js"></script>
-    <title>按摩中</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style/jishi.css"></link>
+  <link rel="stylesheet" href="./style/common.css"></link>
+  <script src="./js/zepto.min.js"></script>
+  <title>按摩中</title>
 </head>
 
 <body>
-    <div class="tc-continner">
-        <div class="logo-box">
-            <div class="logo">
-                <img class="img-logo" src="./images/logo.png"></img>
-            </div>
-            <h3>欢迎使用智足宝足部按摩器</h3>
-        </div>
-        <hr/>
-        <div>
-            <span id="delay" class="delay">00</span>
-            <p id="tips">秒之后开始计时</p>
-        </div>
-        <div>
-            <h2 id="time">00:00:00</h2>
-        </div>
+  <div class="tc-continner">
+    <div class="logo-box">
+      <div class="logo">
+        <img class="img-logo" src="./images/logo.png"></img>
+      </div>
+      <h3>欢迎使用智足宝足部按摩器</h3>
+    </div>
+    <hr/>
+    <div>
+      <span id="delay" class="delay">00</span>
+      <p id="tips">秒之后开始计时</p>
     </div>
     <div>
-        <button id="btagent" class="bt-agent">请启动按摩器</button>
+      <h2 id="time">00:00:00</h2>
     </div>
-    <script src="./js/jishi.js"></script>
+  </div>
+  <div class="bt-agent">
+    <h4 id="btagent">电源已接通,请手动启动按摩器</h4>
+    <p id="report"><a href="./guzhang.html">无法使用？</a></p>
+  </div>
+  <script src="./js/jishi.js"></script>
 </body>
 
 </html>

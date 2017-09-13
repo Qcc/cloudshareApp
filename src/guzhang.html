@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style/guzhang.css"></link>
+  <link rel="stylesheet" href="./style/common.css"></link>
+  <script src="./js/zepto.min.js"></script>
+  <title>故障申报</title>
+</head>
+
+<body>
+  <div class="tc-continner">
+    <div class="logo-box">
+      <div class="logo">
+        <img class="img-logo" src="./images/logo.png"></img>
+      </div>
+      <h3>欢迎使用智足宝足部按摩器</h3>
+    </div>
+    <hr/>
+    <div>
+      <h3 class="gz-title">请选择问题原因</h3>
+      <div class="gz-content">
+        <label><input id="type1" type="radio" name="why" value="1" /> 按摩器没电</label>
+        <br/>
+        <label><input id="type2" type="radio" name="why" value="2" /> 有电，按摩器用不了</label>
+        <br/>
+        <label><input id="type3" type="radio" name="why" value="0" /> 其他原因</label>
+        <br/>
+        <textarea id="detels" rows="6" cols="30" maxlength=100 placeholder="提供更详细的信息，以便我们更好地解决您的问题"></textarea>
+        <p class="text-number"><span id="t-number">0</span>/100</p>
+        <br/>
+        <button id="submit" disabled class="submit">立即提交</button>
+      </div>
+    </div>
+    <div id="model" class="model">
+      <div class="dialog">
+        <div class="dialog-logo"></div>
+        <h5>报修成功</h5>
+        <p>感谢反馈，我们会在订单结束后1个工作日内审核，审核通过后退还支付费用</p>
+        <button id="dialobtn" class="dialog-btn">知道了</button>
+      </div>
+    </div>
+    <script src="./js/guzhang.js"></script>
+</body>
+
+</html>
