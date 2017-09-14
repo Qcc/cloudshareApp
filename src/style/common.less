@@ -10,13 +10,15 @@
             padding: 0
         }
         
-        body {
+        html,body {
             font-family: "Microsoft YaHei", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
             font-size: 13px;
             line-height: 18px;
             color: #737373;
             background-color:#fcf9f0; 
-            margin: 10px 13px 10px 13px
+            width: 100%;
+            height: 100%;
+            margin: 0;
         }
         
         table {
@@ -161,7 +163,7 @@
         @media screen and (min-width:914px) {
             body {
                 width: 854px;
-                margin: 10px auto
+                margin: 0 auto
             }
         }
         
@@ -197,7 +199,9 @@
   height: 100%;
 }
 .tc-continner{
-  margin:0 auto;
+  min-height: 95%;
+  min-width: 95%;
+  padding: 2.5%;
   text-align:center;
   position: relative;
   background-color:#fcf9f0; 

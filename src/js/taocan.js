@@ -1,5 +1,12 @@
 window.onload = function() {
-  init()
+  init();
+  // 防止页面后退
+  // 页面载入时使用pushState插入一条历史记录
+  history.pushState(null, null, document.URL.split("?")[0] + "?token=" + getUrlParam('token') + "&rand=" + Math.random());
+  $(window).on('popstate', function(event) {
+    // 点击回退时再向历史记录插入一条，以便阻止下一次点击回退
+    history.pushState(null, null, document.URL.split("?")[0] + "?token=" + getUrlParam('token') + "&rand=" + Math.random());
+  });
 }
 
 function init() {

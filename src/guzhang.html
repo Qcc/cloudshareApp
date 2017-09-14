@@ -35,15 +35,29 @@
         <button id="submit" disabled class="submit">立即提交</button>
       </div>
     </div>
-    <div id="model" class="model">
-      <div class="dialog">
-        <div class="dialog-logo"></div>
-        <h5>报修成功</h5>
-        <p>感谢反馈，我们会在订单结束后1个工作日内审核，审核通过后退还支付费用</p>
-        <button id="dialobtn" class="dialog-btn">知道了</button>
-      </div>
+    <div id="loading" class="loading">
+      <div class="loading-logo"></div>
+      <p>问题提交中...</p>
     </div>
-    <script src="./js/guzhang.js"></script>
+
+    <div id="dialog-success" class="dialog-success">
+      <div class="success-logo"></div>
+      <h5>报修成功</h5>
+      <p>感谢反馈，我们会在订单结束后1个工作日内审核，审核通过后退还支付费用</p>
+      <button id="successbtn" class="success-btn">知道了</button>
+    </div>
+
+    <div id="dialog-faild" class="dialog-faild">
+      <div class="faild-logo"></div>
+      <h5>报修失败</h5>
+      <p id="faild-text">感谢反馈</p>
+      <button id="faildbtn" class="faild-btn">知道了</button>
+    </div>
+
+  </div>
+  <div id="model" class="model">
+  </div>
+  <script src="./js/guzhang.js"></script>
 </body>
 
 </html>

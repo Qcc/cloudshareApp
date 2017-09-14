@@ -30,38 +30,106 @@
     background-color: #d3a243;
 }
 .model{
-    width: 120%;
-    height: 150%;
-    z-index: 1;
-    position: absolute;
-    top: -10%;
-    left: -10%;
-    bottom: -50%;
-    right: -10%;
-    background-color: rgba(79, 79, 79, 0.7);
+	display: none;	
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom:0;
+  right:0;
+	margin: 0 auto;
+  background-color: rgba(79, 79, 79, 0.7);
 }
-.dialog{
-    width: 60%;
-    height: 30%;
-    margin: 40% auto 0;
-    background-color: #fff;
-    z-index: 2;
-    border-radius: 5px;
-		padding: 10px;
+// .dialog-success,.loading,.dialog-faild{
+// 	display: none;
+// 	position: absolute;
+// 	top: 0;
+// 	left: 50%;
+//   width: 260px;
+//   height: 210px;
+//   margin: 30% 0 0 -130px;
+//   background-color: #fff;
+//   z-index: 2;
+//   border-radius: 5px;
+// 	padding: 10px;
+// }
+.dialog-success,.dialog-faild{
+  display: none;	
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-width: 260px;
+  min-height: 210px;
+  margin: 30% 10%;
+  background-color: #fff;
+  z-index: 2;
+  border-radius: 5px;
+	padding: 10px;
 }
-.dialog-btn{
+.success-btn,.faild-btn{
     background-color: #d3a243;
     width: 50%;
-    height: 20%;
+    height: 40px;
     outline: none;
     border: none;
     border-radius: 20px;;
 }
-.dialog-logo{
+.success-logo{
 	margin: 0 auto;
-	width: 30%;
-	height: 30%;
+	width: 80px;
+	height: 80px;
 	background-image: url('../images/right.png');
 	background-size: 100% 100%;
 	background-position: center;
 }
+.faild-logo{
+	margin: 0 auto;
+	width: 80px;
+	height: 80px;
+	background-image: url('../images/faild.png');
+	background-size: 100% 100%;
+	background-position: center;
+}
+.loading{
+	display: none;
+	position: absolute;
+	top:30%;
+	min-width: 95%;
+  min-height: 210px;
+  margin: 0 auto;
+  z-index: 2;
+  border-radius: 5px;
+}
+.loading p{
+	color:#cdcdcd;
+}
+.loading-logo{
+	margin: 0 auto;
+	width: 80px;
+	height: 80px;
+	background-image: url('../images/loading.png');
+	background-size: 100% 100%;
+	background-position: center;
+	animation:circling 1s linear 0s infinite;
+	-webkit-animation:circling 1s linear 0s infinite; 
+	 
+}
+@keyframes circling{
+    from{  
+      transform:rotate(0deg);  
+    }  
+    to{  
+      transform:rotate(360deg);  
+    }  
+}
+@-webkit-keyframes circling{
+    from{  
+      transform:rotate(0deg);  
+    }  
+    to{  
+      transform:rotate(360deg);  
+    }  
+} 

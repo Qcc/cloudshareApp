@@ -1,5 +1,12 @@
 window.onload = function() {
   init();
+  // 防止页面后退
+  // 页面载入时使用pushState插入一条历史记录
+  history.pushState(null, null, document.URL.split("?")[0] + "?token=" + getUrlParam('token') + "&rand=" + Math.random());
+  $(window).on('popstate', function(event) {
+    // 点击回退时再向历史记录插入一条，以便阻止下一次点击回退
+    history.pushState(null, null, document.URL.split("?")[0] + "?token=" + getUrlParam('token') + "&rand=" + Math.random());
+  });
 }
 
 function checkTime(i) { //将0-9的数字前面加上0，例1变为01 
@@ -62,6 +69,8 @@ function start(data) {
 }
 
 function init() {
+  var reportUrl = $('#report-url');
+  reportUrl.attr('href', './guzhang.html?token=' + getUrlParam("token"));
   var param = {
     type: 'POST',
     url: "http://www.szcloudshare.com/idev/public/queryRemainTime.api",
@@ -79,7 +88,6 @@ function init() {
     }
   };
   $.ajax(param);
-
 }
 
 function getUrlParam(name) {
