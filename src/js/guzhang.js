@@ -9,7 +9,6 @@ window.onload = function() {
   });
 }
 
-
 function init() {
   var type = '';
   var type1 = $('#type1');
@@ -57,10 +56,10 @@ function init() {
   submit.on('click', function(e) {
     model.show();
     loading.show();
-    console.log('loading', loading);
-    let params = { leixing: parseInt(type), miaoshu: detels.val() }
+    var params = {};
+    params.leixing = parseInt(type);
+    params.miaoshu = detels.val();
     fetch(params)
-
   });
   successbtn.on('click', function(e) {
     model.hide();
@@ -81,9 +80,7 @@ function fetch(params) {
     withCredentials: true,
     type: 'POST',
     url: "http://123.56.68.222:8080/idev/public/guzhangshenbao/shenbao.api",
-    // url: "http://www.szcloudshare.com/idev/public/guzhangshenbao/create.api",		
     data: JSON.stringify(params),
-    // data: params,
     dataType: 'json',
     contentType: 'application/json;charset=utf-8',
     error: function(err) {
@@ -93,7 +90,6 @@ function fetch(params) {
       gzComplate(resp);
     }
   };
-  console.log('param', param);
   $.ajax(param);
 }
 

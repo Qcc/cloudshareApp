@@ -20,7 +20,14 @@ function dataReady(data) {
   var delay = $('#delay');
   var tips = $('#tips');
   var btAgent = $('#btagent');
+  var report = $('#report');
   var t = data.remainSeconds - data.dingdan.taocan.jishi;
+  var getTime = setInterval(function() {
+    init();
+    if (t < 0) {
+      clearInterval(getTime);
+    }
+  }, 3000);
   if (t > 0) {
     data.remainSeconds = data.remainSeconds - t;
     delay.text(t);
@@ -30,14 +37,16 @@ function dataReady(data) {
         clearInterval(delayInterval);
         delay.text(null);
         tips.text('开始计时');
-        btAgent.text('按摩中');
+        btAgent.text('足疗机已运行,按摩中');
+        report.hide();
         start(data);
       }
     }, 1000);
   } else {
     delay.text(null);
     tips.text('开始计时');
-    btAgent.text('按摩中');
+    report.hide();
+    btAgent.text('足疗机已运行,按摩中');
     start(data);
   }
 }
