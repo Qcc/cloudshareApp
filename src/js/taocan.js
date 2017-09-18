@@ -50,12 +50,16 @@ function ready(data) {
   var tcLow = $('#tclow');
   var tcMiddle = $('#tcmiddle');
   var tcHeight = $('#tcheight');
+  var loading = $('#loading');
+  var model = $('#model');
   tcLow.on('touchstart', function(e) {
     tcLow.removeClass('enter-style')
     var params = {
       taocanid: data[0].uid,
       token: getUrlParam("token")
     }
+    model.show();
+    loading.show();
     pay(params)
   });
   tcLow.on('touchend', function(e) {
@@ -67,6 +71,8 @@ function ready(data) {
       taocanid: data[1].uid,
       token: getUrlParam("token")
     }
+    model.show();
+    loading.show();
     pay(params)
   });
   tcMiddle.on('touchend', function(e) {
@@ -78,6 +84,8 @@ function ready(data) {
       taocanid: data[2].uid,
       token: getUrlParam("token")
     }
+    model.show();
+    loading.show();
     pay(params)
   });
   tcHeight.on('touchend', function(e) {
@@ -107,7 +115,7 @@ var wxPay = {
           } else if (res.err_msg.substr(res.err_msg.length - 6, 6) == 'cancel') {
             console.log('取消支付!');
           } else {
-            alert('系统繁忙,请稍后再试!');
+            console.log('系统繁忙,请稍后再试!');
           }
         }
       );
@@ -127,14 +135,20 @@ var wxPay = {
 };
 
 function pay(params) {
+  var loading = $('#loading');
+  var model = $('#model');
   var param = {
     type: 'POST',
     url: "http://www.szcloudshare.com/idev/public/unifiedOrder.api",
     data: params,
     error: function(err) {
       console.log("预下单失败", err);
+      model.hide();
+      loading.hide();
     },
     success: function(resp) {
+      model.hide();
+      loading.hide();
       if (resp.errorCode === 0) {
         wxPay.payParameters = resp.entity;
         console.log('wxPay', wxPay);

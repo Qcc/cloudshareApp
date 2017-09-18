@@ -1,5 +1,11 @@
 window.onload = function() {
   init();
+  var getTime = setInterval(function() {
+    var data = init();
+    if (data && data.remainSeconds <= 2) {
+      clearInterval(getTime);
+    }
+  }, 3000);
   // 防止页面后退
   // 页面载入时使用pushState插入一条历史记录
   history.pushState(null, null, document.URL.split("?")[0] + "?token=" + getUrlParam('token') + "&rand=" + Math.random());
@@ -22,12 +28,6 @@ function dataReady(data) {
   var btAgent = $('#btagent');
   var report = $('#report');
   var t = data.remainSeconds - data.dingdan.taocan.jishi;
-  var getTime = setInterval(function() {
-    init();
-    if (t < 0) {
-      clearInterval(getTime);
-    }
-  }, 3000);
   if (t > 0) {
     data.remainSeconds = data.remainSeconds - t;
     delay.text(t);
@@ -85,14 +85,15 @@ function init() {
     url: "http://www.szcloudshare.com/idev/public/queryRemainTime.api",
     data: { token: getUrlParam('token') },
     error: function(err) {
-      console.log("获取时间失败", err);
+      return null;
     },
     success: function(resp) {
       // console.dir(resp);
       if (resp.errorCode == 0) {
         dataReady(resp.entity);
+        return resp.entity;
       } else {
-        console.log("获取时间失败:" + resp);
+        return null;
       }
     }
   };
