@@ -1,11 +1,5 @@
 window.onload = function() {
   init();
-  var getTime = setInterval(function() {
-    var data = init();
-    if (data && data.remainSeconds <= 2) {
-      clearInterval(getTime);
-    }
-  }, 3000);
   // 防止页面后退
   // 页面载入时使用pushState插入一条历史记录
   history.pushState(null, null, document.URL.split("?")[0] + "?token=" + getUrlParam('token') + "&rand=" + Math.random());
@@ -31,9 +25,11 @@ function dataReady(data) {
   if (t > 0) {
     data.remainSeconds = data.remainSeconds - t;
     delay.text(t);
+    var delayTimer = new Date().getTime() + t * 1000;
     var delayInterval = setInterval(function() {
-      delay.text(t--);
-      if (t === 0) {
+      var nowTime = new Date().getTime();
+      delay.text(Math.round((delayTimer - nowTime) / 1000));
+      if ((delayTimer - nowTime) < 0) {
         clearInterval(delayInterval);
         delay.text(null);
         tips.text('开始计时');
@@ -56,23 +52,28 @@ function start(data) {
   var time = $('#time');
   var tips = $('#tips');
   var report = $('#report');
-  var t = parseInt(data.remainSeconds);
+  var overTime = new Date().getTime() + data.remainSeconds * 1000 + 1000;
   var delayInterval = setInterval(function() {
-    var hours = Math.floor(t / 3600);
-    var minutes = Math.floor((t % 3600) / 60);
-    var seconds = Math.floor(t % 60);
-    hours = checkTime(hours);
-    minutes = checkTime(minutes);
-    seconds = checkTime(seconds);
-    time.text(hours + ':' + minutes + ':' + seconds);
-    if (t-- === 0) {
+    var nowTime = new Date().getTime();
+    var t = (overTime - nowTime) / 1000;
+    // console.log('overTime', overTime, 'nowTime', nowTime, t)
+    if (t > 0) {
+      var hours = Math.floor(t / 3600);
+      var minutes = Math.floor((t % 3600) / 60);
+      var seconds = Math.floor(t % 60);
+      hours = checkTime(hours);
+      minutes = checkTime(minutes);
+      seconds = checkTime(seconds);
+      time.text(hours + ':' + minutes + ':' + seconds);
+    } else {
+      time.text('00:00:00');
       clearInterval(delayInterval);
       tips.text('按摩结束');
       report.hide();
       btAgent.text('我要加钟');
       btAgent.on('click', function(e) {
         window.location = './taocan.html?token=' + getUrlParam("token");
-      })
+      });
     }
   }, 1000);
 }
@@ -88,12 +89,11 @@ function init() {
       return null;
     },
     success: function(resp) {
-      // console.dir(resp);
-      if (resp.errorCode == 0) {
+      // resp = { errorCode: 0, entity: { remainSeconds: -1, dingdan: { taocan: { jishi: 5 } } } };
+      if (resp.errorCode === 0) {
         dataReady(resp.entity);
-        return resp.entity;
       } else {
-        return null;
+        console.log('error');
       }
     }
   };

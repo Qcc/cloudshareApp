@@ -50,47 +50,94 @@ function ready(data) {
   var tcLow = $('#tclow');
   var tcMiddle = $('#tcmiddle');
   var tcHeight = $('#tcheight');
-  var loading = $('#loading');
-  var model = $('#model');
-  tcLow.on('touchstart', function(e) {
-    tcLow.removeClass('enter-style')
+  var clicking = true;
+  // tcLow.on('touchstart', function(e) {
+  //   tcLow.removeClass('enter-style')
+  // });
+  // 套餐1
+  tcLow.on('click', function() {
+    tcLow.removeClass('enter-style');
     var params = {
       taocanid: data[0].uid,
       token: getUrlParam("token")
     }
-    model.show();
-    loading.show();
-    pay(params)
+    if (clicking) {
+      pay(params);
+      clicking = false;
+      setTimeout(function() { clicking = true }, 3000);
+    }
+    setTimeout(function() { tcLow.addClass('enter-style'); }, 100);
   });
-  tcLow.on('touchend', function(e) {
-    tcLow.addClass('enter-style')
-  });
-  tcMiddle.on('touchstart', function(e) {
-    tcMiddle.removeClass('enter-style')
+  //套餐2
+  tcMiddle.on('click', function() {
+    tcMiddle.removeClass('enter-style');
     var params = {
       taocanid: data[1].uid,
       token: getUrlParam("token")
     }
-    model.show();
-    loading.show();
-    pay(params)
+    if (clicking) {
+      pay(params);
+      clicking = false;
+      setTimeout(function() { clicking = true }, 3000);
+    }
+    setTimeout(function() { tcMiddle.addClass('enter-style'); }, 100);
   });
-  tcMiddle.on('touchend', function(e) {
-    tcMiddle.addClass('enter-style')
-  });
-  tcHeight.on('touchstart', function(e) {
-    tcHeight.removeClass('enter-style')
+  //套餐3
+  tcHeight.on('click', function() {
+    tcHeight.removeClass('enter-style');
     var params = {
       taocanid: data[2].uid,
       token: getUrlParam("token")
     }
-    model.show();
-    loading.show();
-    pay(params)
+    if (clicking) {
+      pay(params);
+      clicking = false;
+      setTimeout(function() { clicking = true }, 3000);
+    }
+    setTimeout(function() { tcHeight.addClass('enter-style'); }, 100);
   });
-  tcHeight.on('touchend', function(e) {
-    tcHeight.addClass('enter-style')
-  });
+  // tcLow.on('touchend', function(e) {
+  //   tcLow.addClass('enter-style');
+  //   var params = {
+  //     taocanid: data[0].uid,
+  //     token: getUrlParam("token")
+  //   }
+  //   if (clicking) {
+  //     pay(params);
+  //     clicking = false;
+  //     setTimeout(function() { clicking = true }, 3000);
+  //   }
+  // });
+  // tcMiddle.on('touchstart', function(e) {
+  //   tcMiddle.removeClass('enter-style');
+  //   var params = {
+  //     taocanid: data[1].uid,
+  //     token: getUrlParam("token")
+  //   }
+  //   if (clicking) {
+  //     pay(params);
+  //     clicking = false;
+  //     setTimeout(function() { clicking = true }, 3000);
+  //   }
+  // });
+  // tcMiddle.on('touchend', function(e) {
+  //   tcMiddle.addClass('enter-style');
+  // });
+  // tcHeight.on('touchstart', function(e) {
+  //   tcHeight.removeClass('enter-style');
+  // });
+  // tcHeight.on('touchend', function(e) {
+  //   tcHeight.addClass('enter-style')
+  //   var params = {
+  //     taocanid: data[2].uid,
+  //     token: getUrlParam("token")
+  //   }
+  //   if (clicking) {
+  //     pay(params);
+  //     clicking = false;
+  //     setTimeout(function() { clicking = true }, 3000);
+  //   }
+  // });
 }
 
 function getUrlParam(name) {
@@ -135,26 +182,19 @@ var wxPay = {
 };
 
 function pay(params) {
-  var loading = $('#loading');
-  var model = $('#model');
   var param = {
     type: 'POST',
     url: "http://www.szcloudshare.com/idev/public/unifiedOrder.api",
     data: params,
     error: function(err) {
-      console.log("预下单失败", err);
-      model.hide();
-      loading.hide();
+      console.log("预下单失败:" + resp);
     },
     success: function(resp) {
-      model.hide();
-      loading.hide();
       if (resp.errorCode === 0) {
         wxPay.payParameters = resp.entity;
-        console.log('wxPay', wxPay);
         wxPay.jsApiCall();
       } else {
-        console.log("预下单失败:" + resp)
+        console.log("预下单失败:" + resp);
       }
     }
   };

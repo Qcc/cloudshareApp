@@ -24,10 +24,10 @@ function init() {
   var faild = $('#dialog-faild');
   var faildbtn = $('#faildbtn');
   var faildText = $('#faild-text');
-
+  var cancel = $('#cancel');
   detels.on('keydown', function(e) {
     tNumber.text(e.target.value.length);
-    if (e.target.value.length > 3) {
+    if (e.target.value.length > 2) {
       submit.attr('disabled', null);
       submit.addClass('active');
     } else {
@@ -61,10 +61,13 @@ function init() {
     params.miaoshu = detels.val();
     fetch(params)
   });
+  cancel.on('click', function(e) {
+    window.location = './jishi.html?token=' + getUrlParam("token");
+  });
   successbtn.on('click', function(e) {
     model.hide();
     success.hide();
-    window.location = './taocan.html?token=' + getUrlParam("token");
+    window.location = './jishi.html?token=' + getUrlParam("token");
   });
 
   faildbtn.on('click', function() {
@@ -101,12 +104,14 @@ function getUrlParam(name) {
 }
 
 function gzComplate(data) {
+  var cancel = $('#cancel');
   var success = $('#dialog-success');
   var loading = $('#loading');
   var faild = $('#dialog-faild');
   var faildText = $('#faild-text');
   loading.hide();
   if (data.errorCode === 0) {
+    cancel.hide();
     success.show();
   } else {
     faild.show();
