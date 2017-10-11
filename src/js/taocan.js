@@ -12,7 +12,7 @@ window.onload = function() {
 function init() {
   var param = {
     type: 'POST',
-    url: "http://www.szcloudshare.com/idev/public/queryTaocan.api",
+    url: "http://test.szcloudshare.com/idev/public/queryTaocan.api",
     data: {
       token: getUrlParam("token")
     },
@@ -184,7 +184,7 @@ var wxPay = {
 function pay(params) {
   var param = {
     type: 'POST',
-    url: "http://www.szcloudshare.com/idev/public/unifiedOrder.api",
+    url: "http://test.szcloudshare.com/idev/public/unifiedOrder.api",
     data: params,
     error: function(err) {
       console.log("预下单失败:" + resp);

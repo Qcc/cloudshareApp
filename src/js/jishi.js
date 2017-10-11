@@ -83,7 +83,7 @@ function init() {
   reportUrl.attr('href', './guzhang.html?token=' + getUrlParam("token"));
   var param = {
     type: 'POST',
-    url: "http://www.szcloudshare.com/idev/public/queryRemainTime.api",
+    url: "http://test.szcloudshare.com/idev/public/queryRemainTime.api",
     data: { token: getUrlParam('token') },
     error: function(err) {
       return null;

@@ -10,7 +10,7 @@ function bindRoom(params) {
     crossDomain: true,
     withCredentials: true,
     type: 'POST',
-    url: "http://www.szcloudshare.com/idev/public/shebei/assignRoom.api",
+    url: "http://test.szcloudshare.com/idev/public/shebei/assignRoom.api",
     data: JSON.stringify(params),
     dataType: 'json',
     contentType: 'application/json;charset=utf-8',
@@ -66,13 +66,6 @@ function init() {
       vaildRoom.text('');
     }
   });
-  // room.on('change', function(e) {
-  //   if (e.target.value.length > 6) {
-  //     vaildRoom.text('房间号请输入3-5位数字，不够位0补');
-  //   } else {
-  //     vaildRoom.text('');
-  //   }
-  // });
   bind.on('click', function(e) {
     if (dev[0].value === '') {
       vaildDev.text('设备ID不能为空')
@@ -88,4 +81,3 @@ function init() {
     bindRoom(params);
   });
 }
-// http://www.szcloudshare.com/idev/public/shebei/assignRoom.api
