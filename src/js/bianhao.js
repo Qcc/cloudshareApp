@@ -10,7 +10,7 @@ function bindRoom(params) {
     crossDomain: true,
     withCredentials: true,
     type: 'POST',
-    url: "http://test.szcloudshare.com/idev/public/shebei/assignRoom.api",
+    url: "http://www.szcloudshare.com/idev/public/shebei/assignRoom.api",
     data: JSON.stringify(params),
     dataType: 'json',
     contentType: 'application/json;charset=utf-8',

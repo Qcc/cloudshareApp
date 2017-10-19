@@ -82,7 +82,7 @@ function fetch(params) {
     crossDomain: true,
     withCredentials: true,
     type: 'POST',
-    url: "http://test.szcloudshare.com/idev/public/guzhangshenbao/shenbao.api",
+    url: "http://www.szcloudshare.com/idev/public/guzhangshenbao/shenbao.api",
     data: JSON.stringify(params),
     dataType: 'json',
     contentType: 'application/json;charset=utf-8',
